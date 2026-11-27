@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { apiUrl } from './api'
 
 type Message = {
   id: number
@@ -163,7 +164,7 @@ function StreamingChat() {
 
     try {
       const response = await fetch(
-        `/api/Conversation/${encodeURIComponent(sessionId)}`,
+        apiUrl(`/api/Conversation/${encodeURIComponent(sessionId)}`),
         { method: 'DELETE' },
       )
 
@@ -208,7 +209,7 @@ function StreamingChat() {
     setIsSending(true)
 
     try {
-      const response = await fetch('/api/Conversation/stream', {
+      const response = await fetch(apiUrl('/api/Conversation/stream'), {
         method: 'POST',
         headers: {
           Accept: 'text/event-stream',

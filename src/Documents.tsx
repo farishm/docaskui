@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { apiUrl } from './api'
 import { fetchDocuments, type DocumentFile } from './documentApi'
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024
@@ -90,7 +91,7 @@ function Documents() {
 
       const formData = new FormData()
       formData.append('file', selectedFile)
-      const response = await fetch('/api/Documents/Upload', {
+      const response = await fetch(apiUrl('/api/Documents/Upload'), {
         method: 'POST',
         body: formData,
       })
@@ -124,7 +125,7 @@ function Documents() {
 
     try {
       const response = await fetch(
-        `/api/Documents/${encodeURIComponent(document.id)}/Delete`,
+        apiUrl(`/api/Documents/${encodeURIComponent(document.id)}/Delete`),
         { method: 'DELETE' },
       )
 

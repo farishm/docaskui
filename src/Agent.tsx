@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { apiUrl } from './api'
 import { agentSuggestions } from './agentSuggestions'
 
 type Message = {
@@ -149,7 +150,7 @@ function Agent() {
     setIsSending(true)
 
     try {
-      const response = await fetch('/api/AgentV1/stream', {
+      const response = await fetch(apiUrl('/api/AgentV1/stream'), {
         method: 'POST',
         headers: {
           Accept: 'text/event-stream',

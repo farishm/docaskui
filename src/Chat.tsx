@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { apiUrl } from './api'
 import { agentSuggestions } from './agentSuggestions'
 
 type Message = {
@@ -64,7 +65,7 @@ function Chat() {
     setIsSending(true)
 
     try {
-      const response = await fetch('/api/Documents/AskQuestion/rag', {
+      const response = await fetch(apiUrl('/api/Documents/AskQuestion/rag'), {
         method: 'POST',
         headers: {
           Accept: 'application/json, text/plain',

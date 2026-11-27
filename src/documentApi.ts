@@ -1,3 +1,5 @@
+import { apiUrl } from './api'
+
 export type DocumentFile = {
   id: string
   fileName: string
@@ -33,7 +35,7 @@ function parseDocuments(value: unknown): DocumentFile[] {
 export async function fetchDocuments(
   signal?: AbortSignal,
 ): Promise<DocumentFile[]> {
-  const response = await fetch('/api/Documents/ListDocuments', {
+  const response = await fetch(apiUrl('/api/Documents/ListDocuments'), {
     headers: { Accept: 'application/json' },
     signal,
   })

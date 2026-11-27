@@ -17,6 +17,13 @@ Search.
 7. Retrieved context is sent to Azure OpenAI, which generates a grounded answer with source
 citations.
 
+## Deployment
+
+The production frontend sends API requests to the Azure API host configured in `src/api.ts`.
+Set `VITE_API_BASE_URL` in the frontend build environment to override that host. Configure
+the API's CORS policy to allow the deployed Static Web App origin. Local development keeps
+using the Vite `/api` proxy.
+
 Agent workflow
 The AgentV1 implementation gives Azure OpenAI tools for listing documents, searching
 documents, and calculations.

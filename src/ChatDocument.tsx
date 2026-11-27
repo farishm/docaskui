@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { apiUrl } from './api'
 import { fetchDocuments, type DocumentFile } from './documentApi'
 
 type Message = {
@@ -174,7 +175,9 @@ function ChatDocument() {
 
     try {
       const response = await fetch(
-        `/api/Documents/${encodeURIComponent(selectedDocumentId)}/askDocument/stream`,
+        apiUrl(
+          `/api/Documents/${encodeURIComponent(selectedDocumentId)}/askDocument/stream`,
+        ),
         {
           method: 'POST',
           headers: {

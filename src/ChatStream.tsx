@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { apiUrl } from './api'
 import { agentSuggestions } from './agentSuggestions'
 
 type Message = {
@@ -148,7 +149,7 @@ function ChatStream() {
     setIsSending(true)
 
     try {
-      const response = await fetch('/api/Documents/AskQuestion/ragStream', {
+      const response = await fetch(apiUrl('/api/Documents/AskQuestion/ragStream'), {
         method: 'POST',
         headers: {
           Accept: 'text/event-stream',
